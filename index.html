@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> ISI IL </title>
+  
+  <link rel="stylesheet" href="css/all-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/hamburgers.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+<body x-data="{ navbarShow : false }">
+  <!-- navbar -->
+  <div 
+    :class=" navbarShow ? 'fixed backdrop-blur-lg bg-slate-300/40  : bg-color:black: z-50 transition duration-500 shadow-lg dark:bg-slate-700/60' : 'absolute' "
+    @scroll.window=" navbarShow = (window.pageYOffset > 50 ) ? true : false "
+    class="top-0 left-0 right-0"
+  >
+    <div class="container px-4 m-auto md:static">
+      <div 
+        class="flex justify-between md:justify-between" 
+        x-data="{ hamburger : false, toggle : false, theme : '' }">
+        <!-- brand -->
+        <a href="#" class="flex items-center px-4 py-5 text-xl font-bold transition duration-500 text-green-600 hover:text-green-800 hover:bg-emerald-green-100 rounded-xl dark:hover:bg-slate-600 dark:hover:text-black-500" data-aos="zoom-in" data-aos-duration="1000"> ISI IL </a>
+    
+        <!-- end brand -->
+        <div class="flex items-center justify-center">
+          <div class="absolute w-56 transition duration-500 shadow-lg md:shadow-none md:bg-inherit right-4 md:w-full top-20 md:static bg-slate-200 rounded-xl md:rounded-none md:flex md:justify-between dark:bg-slate-800 dark:md:bg-inherit"
+              :class=" hamburger ? '' : 'hidden' "
+              @click.away="hamburger = false"
+          >
+            <a href="#tentang" class="flex items-center px-4 py-5 transition duration-500 md:justify-center hover:text-blue-600 hover:bg-blue-green-100 rounded-xl dark:hover:bg-slate-700 dark:text-slate-200" data-aos="zoom-in" data-aos-duration="1000">אודות</a>
+            <a href="#keahlian" class="flex items-center px-4 py-5 transition duration-500 md:justify-center hover:text-blue-600 hover:bg-blue-green-100 rounded-xl dark:hover:bg-slate-700 dark:text-slate-200" data-aos="zoom-in" data-aos-duration="1000">מיומנות</a>
+            <a href="#sertifikat" class="flex items-center px-4 py-5 transition duration-500 md:justify-center hover:text-blue-600 hover:bg-blue-green-100 rounded-xl dark:hover:bg-slate-700 dark:text-slate-200" data-aos="zoom-in" data-aos-duration="1000">תעודות</a>
+            <!-- <a href="#projek" class="flex items-center px-4 py-5 transition duration-500 md:justify-center hover:text-blue-green-600 hover:bg-blue-green-100 rounded-xl dark:hover:bg-slate-700 dark:text-slate-200" data-aos="zoom-in" data-aos-duration="1000">Projek</a> -->
+            <a href="#hubungi" class="flex items-center px-4 py-5 transition duration-500 md:justify-center hover:text-blue-600 hover:bg-blue-green-100 rounded-xl dark:hover:bg-slate-700 dark:text-slate-200" data-aos="zoom-in" data-aos-duration="1000">צרו קשר</a>
+          </div>
+
+          
+        </div>
+        <div class="flex">
+          <!-- dropdown -->
+          <div x-data="{ open : false }" class="relative inline-block px-4 py-2">
+            <button 
+              @click="open = !open" 
+              @keydown.escape="open = false"
+              type="button" 
+              class="inline-flex justify-center w-full px-4 py-4 text-sm font-medium text-gray-700 rounded-md shadow-sm hover:bg-blue-green-100 focus:outline-none focus:ring focus:ring-blue-green-600 focus:ring-offset-2 dark:text-slate-200 dark:hover:bg-slate-600 transition duration-500" id="menu-button" 
+              aria-expanded="true" 
+              aria-haspopup="true"
+            >
+              <i class="fa-solid fa-circle-half-stroke"></i>
+              <svg class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div 
+              x-show="open"
+              @click.away="open         = false"
+              x-transition:enter        ="transition ease-out duration-100"
+              x-transition:enter-start  ="transform opacity-0 scale-95"
+              x-transition:enter-end    ="transform opacity-100 scale-100"
+              x-transition:leave        ="transition ease-in duration-75"
+              x-transition:leave-start  ="transform opacity-100 scale-100"
+              x-transition:leave-end    ="transform opacity-0 scale-95"
+              class="absolute right-0 z-10 mt-5 origin-top-right shadow-lg bg-slate-200 w-44 rounded-xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+              <div class="py-1" role="none">
+
+                <a
+                  class="block px-4 py-2 text-sm text-gray-700 transition duration-500 hover:bg-blue-green-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-blue-green-600" 
+                  role="menuitem" 
+                  tabindex="-1" 
+                  id="menu-item-0"
+                  @click="
+                  localStorage.theme = 'dark'
+                  document.documentElement.classList.add('dark');
+                ">
+                  <i class="fa-regular fa-sun"></i>
+                  Dark
+                </a>
+                <a 
+                  class="block px-4 py-2 text-sm text-gray-700 transition duration-500 hover:bg-blue-green-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-blue-green-600" 
+                  role="menuitem" 
+                  tabindex="-1" 
+                  id="menu-item-1"
+                  @click="
+                    localStorage.theme = 'light';
+                    document.documentElement.classList.remove('dark');
+                ">
+                  <i class="fa-solid fa-moon"></i>
+                  Light
+                </a>
+                
+
+              </div>
+            </div>
+          </div>
+          <!-- dropdown -->
+          <!-- toggle menu for mobile -->
+          <div" class="flex items-center py-2 md:hidden">
+            <button 
+              @click="toggle = !toggle; hamburger = !hamburger;"
+              @click.away="toggle = false"
+              class="scale-75 hamburger hamburger--emphatic" 
+              :class=" toggle || hamburger ? 'is-active' : '' "
+              type="button"
+            >
+              <span class="hamburger-box">
+                <span class="hamburger-inner dark:bg-slate-200 dark:before:bg-slate-200 dark:after:bg-slate-200"></span>
+              </span>
+            </button>
+          </div>
+          <!-- end toggle menu for mobile -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+  <!-- end navbar -->
+
+  <!-- section1 hero -->
+  <div id="top" class="bg-gradient-to-tl from-rose-100/60 to-teal-100/40 dark:bg-gradient-to-r dark:from-gray-800 dark:via-gray-900 dark:to-gray-900">
+    <div class="container flex flex-col px-4 m-auto pt-28 md:pt-10 lg:px-20 md:justify-between md:flex-row">
+      <div class="flex md:max-w-full" data-aos="fade-right">
+        <div class="sm:m-auto">
+          <h3 class="text-xl sm:text-center ml:text-right-100 dark:text-slate-200"> 
+            <span class="font-semibold text-blue-green-600">   </span>
+          <h1> 
+            ברוכים הבאים
+          </h1>
+ 
+              <img class="object-cover w-380 h-350 bg-center margin-left-20px" src="img/isi.png" alt="גלריה" width="" height="">
+              <img class="object-cover w-380 h-350 bg-center margin-left-20px" src="gif/isi.png" alt="גלריה" width="" height="">
+
+          <br>
+
+          <h2 class="mt-3 text-xl sm:text-center md:text-right dark:text-slate-200 text-duration-4">עיצוב אתרים | פיתוח פרוייקטים | אבטחת מידע</h2>
+          <div>
+            <br>
+            <br>
+           
+          <div>
+          </div>
+          <div class="flex sm:justify-right md:justify-start right:padding-7 dark:text-slate-200 text-duration-4">
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=100087706915874" class="block p-5 transition rounded-lg hover:bg-slate-200 duration-400 hover:text-blue-green-600 dark:hover:bg-slate-800 dark:text-slate-200">
+              <i class="fa-brands fa-facebook fa-lg"></i>
+            </a>
+            <a target="_blank" href="https://www.instagram.com/futuraldesigner/" class="block p-5 transition rounded-lg hover:bg-slate-200 duration-400 hover:text-blue-green-600 dark:hover:bg-slate-800 dark:text-slate-200">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+            <a target="_blank" href="https://twitter.com/Nitsan312" class="block p-5 transition rounded-lg hover:bg-slate-200 duration-400 hover:text-blue-green-600 dark:hover:bg-slate-800 dark:text-slate-200">
+              <i class="fa-brands fa-twitter fa-lg"></i>
+            </a>
+            <a target="_blank" href="https://github.com/nitsan312312" class="block p-5 transition rounded-lg hover:bg-slate-200 duration-400 hover:text-blue-green-600 dark:hover:bg-slate-800 dark:text-slate-200">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:ptsm:pt-0 md:max-w-xl lg:mr-1" data-aos="fade-left">
+        <div class="m-auto mt-1 sm:w-1 sm:h-[100px] md:h-[550px] md:w-[380px]">
+          <img class="object-cover w-380 h-350 bg-center margin-left-20px" src="img/633aa30689ff7.png" alt="גלריה" width="" height="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end section1 hero -->
+
+  <!-- section2 tentang saya -->
+  <div class="dark:bg-slate-900">
+    <div id="tentang" class="container px-4 m-auto py-28 lg:px-20">
+      <h2 class="text-4xl font-semibold dark:text-slate-200" data-aos="fade-down" data-aos-duration="2000"> אודות </h2>
+      <hr class="h-1 mt-6 w-28 bg-blue-600" data-aos="fade-down" data-aos-duration="2000">
+  
+      <div class="pt-[410px] md:pt-[175px] relative xl:w-[860px] xl:m-auto" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+        <div class="p-10 my-5 bg-blue-green-100 rounded-3xl dark:bg-blue-green-900">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="w-[300px] md:ml-0 absolute top-0 md:top-0" data-aos="zoom-in-down">
+              <img class="object-cover w-full h-full mx-auto bg-center" src="img/633aa61aee7f3.png" alt="dg" width="300" height="300">
+            </div>
+            <div class="md:col-start-2">
+              <p class="leading- הקשורים לתחום המומחיות והחשיבה היצירloose dark:text-slate-200">
+                    
+            <h3>ISI</h3> 
+                     
+            <h1>תכנון ופיתוח פרוייקטים, עיצוב ופיתוח אתרים,
+               הנדסת סאונד והפקה מוסיקלית ואפילו פיתוח משחקים.
+              </h1>
+
+                <h1>את כישורי המוזיקה שלי ועריכת הסירטונים התחלתי לצבור בגיל 13</h1>
+                
+
+                 <h1>בשנת 2012 פתחתי עסק של אחסון שרתי משחק </h1>
+
+              <h1>תוך שנה, הגעתי לבערך 3,500,000 מיליון צפיות ביוטיוב בזכות מגוון רחב של רעיונות יצירתיים ובזכות עריכה גרפית מקצועית</h1>
+
+              <br>
+
+            <h1> באותו הזמן, הכרותי עם תוכנת המוזיקה החלה, החל וכבר מהפעם הראשונה והכניסה הראשונה לתוכנת ההפקה פרוטילופס הוצאתי טראק ראשון בעל מבנה מוצלח, ללא שום ידע מקדים</h1>
+            
+
+            <br>
+           <section>
+            <h2>
+              !אין לכם זמן? רעיונות? בשביל זה אני כאן 
+            </h2>
+        
+            <br>
+                    <h3>איך עושים את זה ?</h3>
+                        <h1>   בשיטות מפותחות אפתח עבורכם אתר יוצא דופן,
+                           חם וטרי הישר ממכונת הזמן של העתיד, 
+                          בתוך זמן קצר, בהדרכתכם \הכוונתכם \רכישת פיתוח פרוייקט בתוספת תשלום קלה</h1>
+  
+          </section>  
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end section2 tentang saya -->
+right
+  <!-- section3 keahlian -->
+  <div id="keahlian" class="bg-fixed bg-center bg-cover opacity-80" style="background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80.jpg');" >
+    <div class="container px-4 py-24 m-auto lg:px-20 dark:brightness-100">
+      <h2 class="text-4xl font-semibold text-blue dark:text-slate-200" data-aos="fade-down" data-aos-duration="2000"> מיומנות </h2>
+      <hr class="h-1 mt-6 bg-white w-28 dark:bg-slate-200" data-aos="fade-down" data-aos-duration="2000">
+
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:w-[53rem] md:w-[45rem] m-auto gap-3 md:gap-5">
+        <div class="flex flex-col py-7 md:py-10 text-html-color backdrop-blur-md rounded-2xl bg-white/70 dark:bg-slate-900/80" data-aos="fade-down" data-aos-duration="2000">
+          <i class="m-auto fa-brands fa-html5 fa-3x lg:fa-4x"></i>
+          <p class="m-auto">HTML</p>
+        </div>
+        <div class="flex flex-col py-7 md:py-10 text-css-color backdrop-blur-md rounded-2xl bg-white/70 dark:bg-slate-900/80" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="100">
+          <i class="m-auto fa-brands fa-css3-alt fa-3x"></i>
+          <p class="m-auto">CSS</p>
+        </div>
+        <div class="flex flex-col text-js-color py-7 md:py-10 backdrop-blur-md rounded-2xl bg-white/70 dark:bg-slate-900/80" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200">
+          <i class="m-auto fa-brands fa-square-js fa-3x"></i>
+          <p class="m-auto">Javascript</p>
+        </div>
+        <div class="flex flex-col text-nodejs-color py-7 md:py-10 backdrop-blur-md rounded-2xl bg-white/70 dark:bg-slate-900/80" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="300">
+          <i class="m-auto fa-brands fa-node-js fa-3x"></i>
+          <p class="m-auto">Node Js</p>
+        </div>
+        <div class="flex flex-col text-bootstrap-color py-7 md:py-10 backdrop-blur-md rounded-2xl bg-white/70 dark:bg-slate-900/80" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="500">
+          <i class="m-auto fa-brands fa-bootstrap fa-3x"></i>
+          <p class="m-auto">Bootstrap</p>
+        </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end section3 keahlian -->
+
+  <!-- sertifikat 4 -->
+  <div class="dark:bg-slate-900">
+    <div id="sertifikat" x-data="{}" class="container px-4 py-24 m-auto lg:px-20">
+        <h2 class="text-4xl font-semibold dark:text-slate-200" data-aos="fade-down" data-aos-duration="2000">תעודות</h2>
+        <hr class="h-1 mt-6 w-28 bg-blue-green-600" data-aos="fade-down" data-aos-duration="2000">
+        <div class="grid mt-20 gap-y-6 md:gap-y-0 md:gap-x-4 md:grid-cols-2">
+          <a 
+            @click="$dispatch('img-modal', {  imgModalSrc: 'img/71967822.jpg' })"
+            data-aos="fade-down" 
+            data-aos-duration="3000"
+            class="overflow-hidden transition duration-500 shadow-lg cursor-pointer wounded-2xl hover:shadow-xl"
+          >
+            <img class="w-full bg-center bg-cover dark:brightness-50" src="img/71967822.jpg" alt="">
+          </a>
+          <a
+            @click="$dispatch('img-modal', {  imgModalSrc: 'img/09-05-28-UC-d287a9ee-e49f-4f7f-a1ca-eacd2c469a8d.jpg' })" 
+            data-aos="fade-down" 
+            data-aos-duration="3000"
+            data-aos-delay="100"
+            class="overflow-hidden transition duration-500 shadow-lg cursor-pointer wounded-2xl hover:shadow-xl"
+          > 
+            <img class="w-full bg-center bg-cover dark:brightness-50 " src="img/09-05-28-UC-d287a9ee-e49f-4f7f-a1ca-eacd2c469a8d.jpg" alt="">
+            <a
+            @click="$dispatch('img-modal', {  imgModalSrc: 'img/09-05-28-UC-d287a9ee-e49f-4f7f-a1ca-eacd2c469a8d.jpg' })" 
+            data-aos="fade-down" 
+            data-aos-duration="3000"
+            data-aos-delay="100"
+            class="overflow-hidden transition duration-500 shadow-lg cursor-pointer wounded-2xl hover:shadow-xl"
+          > 
+            <img class="w-full bg-center bg-cover dark:brightness-50 " src="img/UC-ae6eefc5-91a8-484d-a7de-be4a7db419bf.jpg" alt="">
+            <a
+            @click="$dispatch('img-modal', {  imgModalSrc: 'img/09-05-28-UC-d287a9ee-e49f-4f7f-a1ca-eacd2c469a8d.jpg' })" 
+            data-aos="fade-down" 
+            data-aos-duration="3000"
+            data-aos-delay="100"
+            class="overflow-hidden transition duration-500 shadow-lg cursor-pointer wounded-2xl hover:shadow-xl"
+          > 
+            <img class="w-full bg-center bg-cover dark:brightness-50 " src="img/UC-7efe9902-0711-442d-85d9-23f060b34ab1.jpg" alt="">
+          </a>
+          </a>
+        </div>
+    </div>
+  </div>
+  <!-- end sertifikat 4-->
+
+  <!-- section5 projek -->
+
+  <!-- <div id="projek" class="bg-slate-100 dark:bg-slate-800">
+    <div class="container px-4 py-24 m-auto lg:px-20">
+      <h2 class="text-4xl font-semibold dark:text-slate-200" data-aos="fade-down" data-aos-duration="2000">Projek Saya</h2>
+      <hr class="h-1 mt-6 w-28 bg-blue-green-600" data-aos="fade-down" data-aos-duration="2000">
+      <div class="grid grid-cols-1 mt-20 gap-y-4 sm:gap-y-6 sm:gap-x-2 sm:grid-cols-2 md:gap-x-4 lg:gap-x-8 md:grid-cols-3">
+        <div class="overflow-hidden transition duration-500 bg-white border hover:shadow-md rounded-xl dark:bg-slate-900 dark:border-slate-700" data-aos="fade-down" data-aos-duration="2000">
+          <img class="rounded-xl dark:brightness-75" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" alt="">
+          <div class="flex justify-between">
+            <h5 class="p-4 text-md dark:text-slate-200">Lorem ipsum dolor sit amet.</h5>
+            <a href="" class="p-4 transition duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-700">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden transition duration-500 bg-white border hover:shadow-md rounded-xl dark:bg-slate-900 dark:border-slate-700" data-aos="fade-down" data-aos-duration="2000">
+          <img class="rounded-xl dark:brightness-75" src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+          <div class="flex justify-between">
+            <h5 class="p-4 text-md dark:text-slate-200">Lorem ipsum dolor sit amet.</h5>
+            <a href="" class="p-4 transition duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-700">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden transition duration-500 bg-white border hover:shadow-md rounded-xl dark:bg-slate-900 dark:border-slate-700" data-aos="fade-down" data-aos-duration="2000">
+          <img class="rounded-xl dark:brightness-75" src="https://images.unsplash.com/photo-1551419762-4a3d998f6292?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHByb2dyYW1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+          <div class="flex justify-between">
+            <h5 class="p-4 text-md dark:text-slate-200">Lorem ipsum dolor sit amet.</h5>
+            <a href="" class="p-4 transition duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-700">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden transition duration-500 bg-white border hover:shadow-md rounded-xl dark:bg-slate-900 dark:border-slate-700" data-aos="fade-down" data-aos-duration="2000">
+          <img class="rounded-xl dark:brightness-75" src="https://images.unsplash.com/photo-1623479322729-28b25c16b011?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+          <div class="flex justify-between">
+            <h5 class="p-4 text-md dark:text-slate-200">Lorem ipsum dolor sit amet.</h5>
+            <a href="" class="p-4 transition duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-700">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden transition duration-500 bg-white border hover:shadow-md rounded-xl dark:bg-slate-900 dark:border-slate-700" data-aos="fade-down" data-aos-duration="2000">
+          <img class="rounded-xl dark:brightness-75" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" alt="">
+          <div class="flex justify-between">
+            <h5 class="p-4 text-md dark:text-slate-200">Lorem ipsum dolor sit amet.</h5>
+            <a href="" class="p-4 transition duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-700">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden transition duration-500 bg-white border hover:shadow-md rounded-xl dark:bg-slate-900 dark:border-slate-700" data-aos="fade-down" data-aos-duration="2000">
+          <img class="rounded-xl dark:brightness-75" src="https://images.unsplash.com/photo-1618388810903-840bb0d15ea5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+          <div class="flex justify-between">
+            <h5 class="p-4 text-md dark:text-slate-200">Lorem ipsum dolor sit amet.</h5>
+            <a href="" class="p-4 transition duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-slate-700">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- end section5 projek -->
+
+  <!-- section6 Hubungi -->
+  <div class="dark:bg-slate-900">
+    <div id="hubungi" class="container px-4 py-24 m-auto lg:px-20">
+        <h2 class="text-4xl font-semibold dark:text-slate-200" data-aos="fade-down" data-aos-duration="2000">צרו קשר</h2>
+        <hr class="h-1 mt-6 w-28 bg-blue-green-600" data-aos="fade-down" data-aos-duration="2000">
+        <div class="m-auto mt-20 md:w-3/5">
+
+          <form method="post" name="myemailform "action="form-to-email.php">
+            <label class="block w-full mb-3 text-xl dark:text-slate-200" for="email" data-aos="zoom-out-right" data-aos-duration="2000">אימייל</label>
+            <input class="block w-full transition duration-500 rounded-lg border-blue-green-400 focus:outline-none focus:ring focus:ring-blue-green-600 dark:bg-slate-800" type="email" id="email" data-aos="fade-down" data-aos-duration="2000">
+  
+            <label class="block w-full mb-5 text-xl dark:text-slate-200" for="company" data-aos="zoom-out-right" data-aos-duration="2000">סוג העסק </label>
+            <input class="block w-full transition duration-500 rounded-lg border-blue-green-400 focus:outline-none focus:ring focus:ring-blue-green-600 dark:bg-slate-800" type="email" id="email" data-aos="fade-down" data-aos-duration="2000">
+
+           
+            
+            <label class="block w-full mt-5 mb-3 text-xl dark:text-slate-200" for="subject" data-aos="zoom-out-right" data-aos-duration="2000" data-aos-delay="200">נושא</label>
+            <input class="block w-full transition duration-500 rounded-lg border-blue-green-400 focus:outline-none focus:ring focus:ring-blue-green-600 dark:bg-slate-800" type="text" id="subjext" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200">
+  
+            <label class="block w-full mt-5 mb-3 text-xl dark:text-slate-200" for="message" data-aos="zoom-out-right" data-aos-duration="2000" data-aos-delay="400">תוכן</label>
+            <textarea class="block w-full transition duration-500 rounded-lg border-blue-green-400 foucs:outline-none foucs:ring focus:ring-blue-green-600 dark:bg-slate-800" name="pesan" id="pesan" cols="30" rows="6" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="400"></textarea>
+            <label for="avatar">עיצוב מועדף</label>
+
+            <input type="file"
+                   id="avatar" name="avatar"
+                   accept="image/png, image/jpeg">
+                   <input type="submit" value="Submit">
+          </form>
+        </div>
+    </div>
+  </div>
+
+  
+<h2 style="text-align:center"></h2>
+
+<div class="card float-right">
+  <img src="/w3images/jeans3.jpg" alt="" style="width:100%">
+  <h3>1 DAY DELIVERY - CRYPTO ONLY</h3>
+  <h1> פנוי  </h1>
+  <h2 class="price">385 usdt משלמים ומעבירים לכתובת הארנק </h2>
+  <br>
+  <h2> בוחרים עיצוב  מועדף \ רעיון אישי </h2>
+  <br>
+    <h2> כותבים לי הוראות מיוחדות, את השם המלא ושם העסק</h2>
+  <h1>כתובת הארנק:</h1>
+  <h1><button >  0x520f3f577ffb4a642df887285f7b94bb53538d20</button></h1>
+
+</div>
+
+  <!-- end section6 Hubungi -->
+
+  <!-- section 7 footer -->
+  <div class="bg-slate-900 text-slate-300">
+    <div class="container px-4 pb-8 m-auto pt-14 lg:px-20">
+      <div class="grid gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="px-2" data-aos="fade-down" data-aos-duration="2000">
+          
+          <!-- <a class="block mb-3 transition duration-500 hover:text-blue-green-600" href="#projek">Projek</a> -->
+        </div>
+
+        <div class="px-2" data-aos="fade-down" data-aos-duration="2000">
+          <h3 class="text-xl font-semibold"> כתובת </h3>
+          <hr class="h-1 mt-4 mb-4 w-28 bg-blue-green-600">
+          <p class="mb-3">ז'בוטינסקי 27 </p>
+          <p class="mb-3">רמת גן, ישראל</p>
+        </div>
+
+        <div class="px-2 padding-left-115" data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200">
+          <h3 class="text-xl font-semibold"> דברו איתי </h3>
+          <hr class=" mt-4 mb-4 w-28 bg-blue-green-600">
+          <p class=" mb-3" target="_blank" href="https://wa.me/+6282147554549?text=">+972 55 6844 781</p>
+          <p class=" mb-3" target="_blank" href="mailto:nitsan312312@hotmail.co.il">ניצן  </p>
+         
+            </a>
+            <img class="w-full bg-center bg-cover dark:brightness-50 " src="img\C:\Users\Nitsa\Desktop\PROJECTS\Futural Design\src\img\barcode.png" alt="">
+ 
+
+      </div>
+    </div>
+  </div>
+  <div class="bg-slate-1500 transparent-bg-slate-200 bg-color-transparent" x-data="{ tahun : new Date().getFullYear() }">
+    <h1 class="py-3 text-center text-white">
+      &copy; כל הזכויות שמורות 
+      <span id="tahun" x-text="tahun"></span> 
+      ISI-IL
+    </h1>
+
+  
+  <!-- end section 7 footer -->
+
+  <!-- button scroll -->
+  <button
+    id="scrollTop" 
+    class="fixed z-50 transition duration-500 shadow-2xl rounded-xl w-14 h-14 bg-blue-green-400 bottom-10 right-10 hover:bg-blue-green-600 shadow-blue-green-600">    
+  <div class="flex items-center justify-center text-white">
+      <i class="fa-solid fa-arrow-up"></i>
+    </div>
+  </button>
+  <!-- end button scroll -->
+
+  <!-- modal lightbox -->
+  <div x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }">
+    <template 
+      @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" 
+      x-if="imgModal">
+      <div  
+        x-transition:enter="transition ease-out duration-300" 
+        x-transition:enter-start="opacity-0" 
+        x-transition:enter-end="opacity-100 transform scale-100" 
+        x-transition:leave="transition ease-in duration-300" 
+        x-transition:leave-start="opacity-100 transform scale-100" 
+        x-transition:leave-end="opacity-0" 
+        x-on:click.away="imgModalSrc = ''" 
+        class="fixed inset-0 z-50 flex items-center justify-center w-full p-2 overflow-hidden bg-black bg-opacity-70 backdrop-blur-sm h-100"
+      >
+        <div @click.away="imgModal = ''" class="flex flex-col max-w-3xl max-h-full">
+          <div class="z-50">
+            <button @click="imgModal = ''" class="float-right pt-2 pr-2 outline-none focus:outline-none">
+              <svg class="text-white fill-current " xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="p-2">
+            <img :alt="imgModalSrc" class="object-contain h-1/2-screen dark:brightness-75" :src="imgModalSrc">
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+  <!--end modal lightbox -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+
+    const scrollTop = document.querySelector('#scrollTop');
+    scrollTop.addEventListener('click', () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and
+    });
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 20) {
+        scrollTop.style.display = "block";
+      } else {
+        scrollTop.style.display = "none";
+      }
+    }
+
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches || localStorage.theme == 'dark') {
+      localStorage.theme = 'dark';
+      document.documentElement.classList.add('dark');      
+    } else {
+      localStorage.theme = 'light';
+      document.documentElement.classList.remove('dark');
+    }
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', function (e) {
+      systemUI();
+    });
+
+    function systemUI () {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        localStorage.theme = 'dark';
+        document.documentElement.classList.add('dark');
+      } else {
+        localStorage.theme = 'light';
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    function functChange (x_theme) {      
+      localStorage.theme == 'dark' ?  x_theme = 'dark' : x_theme = 'light';
+      console.log(x_theme);
+    }
+
+  </script>
+</body>
+
+<style>
+.items-center {
+font-size: 17px;color:#3284ff;background-color:rgba(0, 174, 255, 0);
+}
+.items-center:hover {
+font-size: 17px;color:rgb(106, 128, 255);transition-duration:0.3em;border-color:rgb(255, 209, 140);border-width: 4 px;border-inline-start: 5px;
+}
+.items-center:active {
+font-size: 17px;
+}
+
+bg-slate-700 {
+background-color:transparent;
+}
+
+h1 {
+font-size: 15px;color:#519aff;background:#ff5b5b00;
+}
+
+h2 {
+font-size: 14px;color:#275eb1;background:#ff5b5b00;float:right;
+}
+
+h3 {
+font-size: 23px;color:#267dff;;background:#ff5b5b00;
+}
+
+.buttons {
+font-size: 14px; color:#0045ad;
+}
+
+.buttons:hover {
+font-size: 14px; color:#0045ad;
+}
+
+.block {
+font-size: 14px; color:#0045ad;
+}
+
+section {
+font-size: 14px; color:#0045ad;float:cover;padding-left:20px;
+}
+
+
+
+.flex-wrap {
+background-color:#0045ad18;font-size:15px;color:#5398ff;border-radius: 5px;
+}
+
+.flex-wrap-items {
+background-color:#0045ad18;font-size:15px;color:#5398ff;border-radius: 5px;
+}
+.navbarShow {
+background-color:#0045adc0;font-size:15px;color:#5398ff;border-radius: 5px;
+}
+
+
+</style>	
+	
+
+
+
+</html>
